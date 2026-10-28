@@ -3,7 +3,6 @@
 
 ## Global Data
 
-/*
 Since our earliest days of writing software, we were warned of the perils of
 global data—how it was invented by demons from the fourth plane of hell, which
 is the resting place of any programmer who dares to use it. And, although we
@@ -29,11 +28,13 @@ and something benign is the dose. You can get away with small doses of global
 data, but it gets exponentially harder to deal with the more you have. Even with
 little bits, we like to keep it encapsulated—that’s the key to coping with changes
 as the software evolves.
-*/
+
+## Problem
+
+When accessing mutable global variables you can easily make code unpredictible as it directly accesses constantly changing data. By implelmenting an input paramteter you can more safely access global data.
 
 ## Bad Example
 
-    ```
     let currentUser = "Guest"
 
     function greetUser(){
@@ -43,13 +44,10 @@ as the software evolves.
     function login(name: string){
         currentUser = name;
     }
-    ```
-
+    
 ## Refactored Code
 
-    ```
     let currentUser = "Guest"
-
 
     function greetUser(user: string){
         console.log("Hello," + user)
@@ -59,4 +57,3 @@ as the software evolves.
         currentUser = name;
     }
     
-    ```
