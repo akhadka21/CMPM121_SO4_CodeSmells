@@ -56,4 +56,41 @@ When accessing mutable global variables you can easily make code unpredictible a
     function login(name: string){
         currentUser = name;
     }
-    
+
+    ## Duplicated Code
+
+Duplicated Code occurs when the same or very similar logic appears in multiple places. It can cause bugs when someone updates one copy but misses another.
+
+Dup code occurs when the same or similar logic appears in multiple places. It can cause bugs when someone updates one copy but misses other
+
+# Prevention and Refactoring
+
+
+Look for previous and repeat code when reviewing. Use Fowler's Extract Function refactoring to move shared logic, call it wherever needed. Avoid combining code that look similar but has different behavior
+
+# Python example
+
+**Before:**
+
+```python
+def student_price(price):
+    return price - price * 0.10
+
+def member_price(price):
+    return price - price * 0.10
+
+Before like both use the same number so when u fix one u have to fix other
+
+
+**After:**
+
+def apply_discount(price, discount_rate):
+    return price - price * discount_rate
+
+def student_price(price):
+    return apply_discount(price, 0.10)
+
+def member_price(price):
+    return apply_discount(price, 0.10)
+
+So now a change to the formula only needs to happen once.
